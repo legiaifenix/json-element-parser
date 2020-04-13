@@ -2,8 +2,12 @@
 namespace legiaifenix\jsonParser\Builders;
 
 
+use legiaifenix\jsonParser\Utils\Draw;
+
 class JsonElementsBuilder extends ElementsBuilder
 {
+
+    protected $output = '';
 
     public function __construct(string $fileContents)
     {
@@ -12,13 +16,22 @@ class JsonElementsBuilder extends ElementsBuilder
 
     public function build()
     {
-        $this->loopAllElements();
+        $this->loopFileContents();
+        $this->loopElements();
+        return $this->output;
     }
 
-    private function loopAllElements()
+    private function loopFileContents()
     {
         foreach ($this->fileContents as $element) {
             $this->generateElement($element);
+        }
+    }
+
+    private function loopElements()
+    {
+        foreach ($this->elements as $element) {
+            $this->output .= Draw::drawElement($element);
         }
     }
 

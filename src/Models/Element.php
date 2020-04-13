@@ -20,19 +20,19 @@ abstract class Element
     protected $text;
 
     /**
-     * @var string $element         As the type of element it should be drawing in the frontend
+     * @var mixed $type            As the type of element it should be drawing in the frontend
      */
-    protected $element;
+    protected $type;
 
     /**
      * @var Element $child          As the link reference for the children that belong to this element
      */
     protected $child;
 
-    public function __construct(string $text, string $element)
+    public function __construct(string $text, $type)
     {
         $this->text     = $text;
-        $this->element  = $element;
+        $this->type     = $type;
     }
 
     /**
@@ -43,12 +43,9 @@ abstract class Element
         return $this->text;
     }
 
-    /**
-     * @return string
-     */
-    public function getElement(): string
+    public function getType()
     {
-        return $this->element;
+        return $this->type;
     }
 
 }

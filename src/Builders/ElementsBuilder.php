@@ -21,12 +21,10 @@ abstract class ElementsBuilder
 
     protected function generateElement($element)
     {
-        if (!is_array($element))
-            return new Paragraph($element);
-
-        if (is_array($element)) {
+        if (!is_array($element)) {
+            $this->elements[] = new Paragraph($element);
+        } else {
             //todo need to check the element types and recursive calls for the content for them
         }
-
     }
 }
