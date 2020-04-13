@@ -2,22 +2,28 @@
 namespace legiaifenix\jsonParser\Factories;
 
 
+use legiaifenix\jsonParser\Builders\ElementsBuilder;
 use legiaifenix\jsonParser\Exceptions\Files\FileDoesNotExistsException;
 use legiaifenix\jsonParser\Exceptions\Files\FileDoesNotHaveExtension;
 use legiaifenix\jsonParser\Utils\Files;
 
 class ElementsFactory
 {
-    public static function create(string $filePath)
+    /**
+     * @param string $filePath
+     * @throws FileDoesNotExistsException
+     * @throws FileDoesNotHaveExtension
+     */
+    public static function create(string $filePath) :ElementsBuilder
     {
-        try {
-            $content = Files::loadFileContents($filePath);
-            echo Files::fileType($filePath);
-        } catch (FileDoesNotHaveExtension $e) {
-            echo $e->getMessage();
-        } catch (FileDoesNotExistsException $e) {
-            echo $e->getMessage();
-        }
+        $content    = Files::loadFileContents($filePath);
+        $classname  = self::prepareBuilderClassLoad(Files::fileType($filePath));
+        return new $classname($content);
+    }
 
+    private static function prepareBuilderClassLoad(string $type)
+    {
+        $classname = 'legiaifenix\\jsonParser\Builders\\' . ucfirst($type) . 'ElementsBuilder';
+        return $classname;
     }
 }
