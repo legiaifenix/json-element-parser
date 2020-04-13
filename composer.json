@@ -1,0 +1,19 @@
+{
+    "name": "diogosanto/json-element-parser",
+    "description": "A small Json file parser to PHP to then be able to manipulate elements in our views",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "legiaifenix\\jsonParser": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Diogo Santo",
+            "email": "legiaifenix@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
