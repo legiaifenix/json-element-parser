@@ -7,9 +7,6 @@ use legiaifenix\jsonParser\Exceptions\Files\FileDoesNotHaveExtension;
 
 class Files
 {
-
-    const JSON_TYPE = 'json';
-
     /**
      * @param string $filePath
      * @return false|string
