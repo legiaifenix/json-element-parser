@@ -12,7 +12,14 @@ class JsonElementsBuilder extends ElementsBuilder
 
     public function build()
     {
-        return "Json Builder";
+        $this->loopAllElements();
+    }
+
+    private function loopAllElements()
+    {
+        foreach ($this->fileContents as $element) {
+            $this->generateElement($element);
+        }
     }
 
 }
