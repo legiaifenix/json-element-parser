@@ -3,9 +3,12 @@ namespace legiaifenix\jsonParser\Utils;
 
 
 use legiaifenix\jsonParser\Exceptions\Files\FileDoesNotExistsException;
+use legiaifenix\jsonParser\Exceptions\Files\FileDoesNotHaveExtension;
 
 class Files
 {
+
+    const JSON_TYPE = 'json';
 
     /**
      * @param string $filePath
@@ -18,5 +21,19 @@ class Files
             return file_get_contents($filePath);
 
         throw new FileDoesNotExistsException($filePath);
+    }
+
+    /**
+     * @param $filePath
+     * @return mixed
+     * @throws FileDoesNotHaveExtension
+     */
+    public static function fileType($filePath)
+    {
+        $type = explode('.', $filePath);
+        if (count($type) > 1)
+            return end($type);
+
+        throw new FileDoesNotHaveExtension($filePath);
     }
 }
