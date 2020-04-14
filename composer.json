@@ -1,5 +1,5 @@
 {
-    "name": "diogosanto/json-element-parser",
+    "name": "legiaifenix/json-element-parser",
     "description": "A small Json file parser to PHP to then be able to manipulate elements in our views",
     "type": "library",
     "license": "MIT",
@@ -15,5 +15,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": "7.1.0"
+    }
 }
