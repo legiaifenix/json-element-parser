@@ -25,9 +25,9 @@ abstract class Element
     protected $type;
 
     /**
-     * @var Element $child          As the link reference for the children that belong to this element
+     * @var array $children         As the link reference for the children that belong to this element
      */
-    protected $child;
+    protected $children = [];
 
     public function __construct(string $text, $type)
     {
@@ -46,6 +46,24 @@ abstract class Element
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getChildren(): ?array
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param Element $child
+     * @return Element
+     */
+    public function setChild(Element $child): Element
+    {
+        $this->children[] = $child;
+        return $this;
     }
 
 }

@@ -8,6 +8,6 @@ class Title extends Element
 {
     public function __construct(string $text)
     {
-        parent::__construct($text, HeaderOne::class);
+        parent::__construct($text, new HeaderOne());
     }
 }

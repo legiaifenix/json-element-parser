@@ -2,36 +2,27 @@
 namespace legiaifenix\jsonParser\Builders;
 
 
+use legiaifenix\jsonParser\Factories\ElementsFactory;
+use legiaifenix\jsonParser\Models\Element;
 use legiaifenix\jsonParser\Utils\Draw;
 
 class JsonElementsBuilder extends ElementsBuilder
 {
-
-    protected $output = '';
 
     public function __construct(string $fileContents)
     {
         $this->fileContents = json_decode($fileContents, true);
     }
 
-    public function build()
+    public function generateSpecificElementTypes($content, string $type = '')
     {
-        $this->loopFileContents();
-        $this->loopElements();
-        return $this->output;
-    }
+        switch ($type) {
+            case ElementsFactory::TITLE_ELEMENT:
+                return ElementsFactory::createTitle($content);
 
-    private function loopFileContents()
-    {
-        foreach ($this->fileContents as $element) {
-            $this->generateElement($element);
-        }
-    }
-
-    private function loopElements()
-    {
-        foreach ($this->elements as $element) {
-            $this->output .= Draw::drawElement($element);
+            case ElementsFactory::PARAGRAPH_ELEMENT:
+            default:
+                return ElementsFactory::createParagraph($content);
         }
     }
 
