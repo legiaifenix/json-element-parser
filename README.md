@@ -15,7 +15,7 @@ them to do the translations and them easily attach them to the server again with
 # Installation 
 
 ```bash
-composer require legiaifenix/json-elements-parser
+composer require legiaifenix/json-element-parser
 ``` 
 
 ## Supported File types
