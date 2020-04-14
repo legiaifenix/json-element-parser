@@ -55,7 +55,7 @@ abstract class ElementsBuilder
 
     protected function generateArrayBasedElements($elements, bool $primaryGenerated, Element $parentElement = null)
     {
-        asort($elements, SORTSIZE | SORT_NUMERIC);
+        //asort($elements, SORTSIZE | SORT_NUMERIC);
 
         foreach ($elements as $key => $element) {
             if (!$primaryGenerated) {
